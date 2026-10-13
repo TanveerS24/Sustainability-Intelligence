@@ -121,9 +121,40 @@ Write a 3-5 sentence actionable recommendation with citations. List only chunk I
 }
 
 /**
+ * LLM-based recommendation using local Ollama Qwen3:14B.
+ */
+async function ollamaRecommend(cluster, rule, retrieved) {
+  const { OllamaClient } = await import('./ollamaClient.js');
+  const client = new OllamaClient();
+
+  const chunkContext = retrieved.map(({ chunk }) =>
+    `[${chunk.chunkId}] ${chunk.heading}\n${chunk.text.substring(0, 400)}`
+  ).join('\n\n---\n\n');
+
+  const evidence = rule
+    ? `Cluster: ${cluster.name}. Rule: ${rule.explanation}`
+    : `Cluster: ${cluster.name}. Size: ${cluster.size} households.`;
+
+  const prompt = `You are a Sustainability Energy Efficiency Advisor. Use the retrieved knowledge chunks below to generate a concise, grounded recommendation.
+Cite chunks using [chunkId] notation.
+
+EVIDENCE:
+${evidence}
+
+RETRIEVED KNOWLEDGE:
+${chunkContext}
+
+Write a 3-5 sentence actionable recommendation with citations. Only cite chunk IDs present above.`;
+
+  const res = await client.generate(prompt, { temperature: 0.2, maxTokens: 400 });
+  return res.text;
+}
+
+/**
  * Main advisor entry point.
  */
-export async function generateRecommendation(cluster, rule = null) {
+export async function generateRecommendation(cluster, rule = null, options = {}) {
+  const { preferOllama = false } = options;
   const retriever = getRetriever();
   const query = buildQuery(cluster, rule);
   const retrieved = retriever.retrieve(query, cfg.RAG_TOP_K);
@@ -148,7 +179,15 @@ export async function generateRecommendation(cluster, rule = null) {
   let recommendation;
   let mode;
 
-  if (cfg.ANTHROPIC_API_KEY) {
+  if (preferOllama) {
+    try {
+      recommendation = await ollamaRecommend(cluster, rule, retrieved);
+      mode = 'ollama-qwen3';
+    } catch (err) {
+      recommendation = templateRecommend(cluster, rule, retrieved);
+      mode = 'template';
+    }
+  } else if (cfg.ANTHROPIC_API_KEY) {
     recommendation = await llmRecommend(cluster, rule, retrieved);
     mode = 'llm';
   } else {

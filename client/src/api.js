@@ -87,3 +87,40 @@ export async function fetchRecommendation(payload) {
     body: JSON.stringify(payload),
   });
 }
+
+export async function fetchRagQuery(payload) {
+  return request('/api/rag/query', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function triggerRagIngest(payload = {}) {
+  return request('/api/rag/ingest', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function fetchRagStatus() {
+  return request('/api/rag/status');
+}
+
+export async function fetchRagSources() {
+  return request('/api/rag/sources');
+}
+
+export async function fetchClusters() {
+  return request('/api/clusters');
+}
+
+export async function fetchClusterDetail(clusterId) {
+  return request(`/api/clusters/${encodeURIComponent(clusterId)}`);
+}
+
+export async function simulateSustainability(payload) {
+  return request('/api/sustainability/simulate', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}

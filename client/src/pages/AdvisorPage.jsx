@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMiningClusters, fetchMiningRules, calculateImpact, fetchRecommendation } from '../api.js';
+import {
+  fetchMiningClusters,
+  fetchMiningRules,
+  calculateImpact,
+  fetchRecommendation,
+} from '../api.js';
+import RagAssistant from '../components/RagAssistant.jsx';
 
 export default function AdvisorPage() {
   const [clusters, setClusters] = useState([]);
@@ -90,12 +96,15 @@ export default function AdvisorPage() {
         <div>
           <h1 className="page-title">Decision Support & Policy Impact Advisor</h1>
           <p className="page-desc">
-            Knowledge-Augmented RAG Recommendations & What-If Carbon Reduction Simulator
+            Local RAG Intelligence (Qwen3:14B + SQLite Vector DB) & Sustainability Simulator
           </p>
         </div>
       </div>
 
       {error && <div className="error-banner">{error}</div>}
+
+      {/* Local RAG Intelligence Assistant */}
+      <RagAssistant selectedClusterId={selectedClusterId} />
 
       {/* Persona Selection */}
       <div className="card" style={{ marginBottom: '1.5rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>

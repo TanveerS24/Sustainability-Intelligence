@@ -47,9 +47,21 @@ const cfg = {
   TEMP_COLD_MAX: parseFloat(process.env.TEMP_COLD_MAX || '8'),
   TEMP_MILD_MAX: parseFloat(process.env.TEMP_MILD_MAX || '16'),
 
-  // RAG
+  // RAG & Local LLM
   ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY || '',
+  OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || 'http://127.0.0.1:11434',
+  OLLAMA_LLM_MODEL: process.env.OLLAMA_LLM_MODEL || 'qwen3:14b',
+  OLLAMA_EMBED_MODEL: process.env.OLLAMA_EMBED_MODEL || 'nomic-embed-text:latest',
+  VECTOR_DB_PATH: process.env.VECTOR_DB_PATH
+    ? path.resolve(process.env.VECTOR_DB_PATH)
+    : path.join(ROOT, 'data', 'vector_store.db'),
+  DATASET_DIR: process.env.DATASET_DIR
+    ? path.resolve(process.env.DATASET_DIR)
+    : path.resolve(ROOT, '..', 'DataSet'),
   RAG_TOP_K: parseInt(process.env.RAG_TOP_K || '5', 10),
+  CHUNK_SIZE: parseInt(process.env.CHUNK_SIZE || '500', 10),
+  CHUNK_OVERLAP: parseInt(process.env.CHUNK_OVERLAP || '50', 10),
+  OLLAMA_TIMEOUT_MS: parseInt(process.env.OLLAMA_TIMEOUT_MS || '120000', 10),
 
   // Validation
   MIN_READINGS_PER_HH: parseInt(process.env.MIN_READINGS_PER_HH || '1000', 10),

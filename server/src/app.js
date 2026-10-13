@@ -8,6 +8,9 @@ import olapRouter from './routes/olap.js';
 import miningRouter from './routes/mining.js';
 import impactRouter from './routes/impact.js';
 import advisorRouter from './routes/advisor.js';
+import ragRouter from './routes/rag.js';
+import clustersRouter from './routes/clusters.js';
+import sustainabilityRouter from './routes/sustainability.js';
 
 const app = express();
 
@@ -38,6 +41,9 @@ app.use('/api/olap', olapRouter);
 app.use('/api/mining', miningRouter);
 app.use('/api/impact', impactRouter);
 app.use('/api/advisor', advisorRouter);
+app.use('/api/rag', ragRouter);
+app.use('/api/clusters', clustersRouter);
+app.use('/api/sustainability', sustainabilityRouter);
 
 // Consistent error format — no stack traces in response
 app.use((err, req, res, _next) => {
