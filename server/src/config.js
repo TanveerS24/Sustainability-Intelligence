@@ -16,6 +16,7 @@ const cfg = {
   DB_PATH: process.env.DB_PATH
     ? path.resolve(process.env.DB_PATH)
     : path.join(ROOT, 'data', 'sustainability.db'),
+  MONGO_URI: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/sustainability',
 
   // Sample window
   SAMPLE_HOUSEHOLDS: parseInt(process.env.SAMPLE_HOUSEHOLDS || '300', 10),

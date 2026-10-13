@@ -11,6 +11,7 @@ import advisorRouter from './routes/advisor.js';
 import ragRouter from './routes/rag.js';
 import clustersRouter from './routes/clusters.js';
 import sustainabilityRouter from './routes/sustainability.js';
+import mongoRouter from './routes/mongo.js';
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/api/advisor', advisorRouter);
 app.use('/api/rag', ragRouter);
 app.use('/api/clusters', clustersRouter);
 app.use('/api/sustainability', sustainabilityRouter);
+app.use('/api/mongo', mongoRouter);
 
 // Consistent error format — no stack traces in response
 app.use((err, req, res, _next) => {
