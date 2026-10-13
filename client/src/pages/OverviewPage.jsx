@@ -137,15 +137,15 @@ export default function OverviewPage() {
                 <AreaChart data={monthly}>
                   <defs>
                     <linearGradient id="kwhGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#ff8a65" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#ff8a65" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                  <XAxis dataKey="period" stroke="#64748b" fontSize={12} />
-                  <YAxis stroke="#64748b" fontSize={12} />
-                  <Tooltip contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151' }} />
-                  <Area type="monotone" dataKey="kwh" stroke="#10b981" fillOpacity={1} fill="url(#kwhGrad)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#332227" />
+                  <XAxis dataKey="period" stroke="#987b74" fontSize={12} />
+                  <YAxis stroke="#987b74" fontSize={12} />
+                  <Tooltip contentStyle={{ backgroundColor: '#261c20', borderColor: '#5e3c45', color: '#fff3ee', borderRadius: '6px' }} />
+                  <Area type="monotone" dataKey="kwh" stroke="#ff8a65" fillOpacity={1} fill="url(#kwhGrad)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>

@@ -59,11 +59,11 @@ export default function ClustersPage() {
           <div style={{ height: '220px', width: '100%' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={kScores}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                <XAxis dataKey="k" stroke="#64748b" label={{ value: 'Number of Clusters (k)', position: 'insideBottom', offset: -5, fill: '#64748b', fontSize: 12 }} />
-                <YAxis stroke="#64748b" fontSize={12} />
-                <Tooltip contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151' }} />
-                <Line type="monotone" dataKey="silhouette" stroke="#06b6d4" strokeWidth={2} dot={{ r: 4 }} name="Silhouette Score" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#332227" />
+                <XAxis dataKey="k" stroke="#987b74" label={{ value: 'Number of Clusters (k)', position: 'insideBottom', offset: -5, fill: '#987b74', fontSize: 12 }} />
+                <YAxis stroke="#987b74" fontSize={12} />
+                <Tooltip contentStyle={{ backgroundColor: '#261c20', borderColor: '#5e3c45', color: '#fff3ee', borderRadius: '6px' }} />
+                <Line type="monotone" dataKey="silhouette" stroke="#ff8a65" strokeWidth={2} dot={{ r: 4, fill: '#ff8a65' }} name="Silhouette Score" />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -88,7 +88,7 @@ export default function ClustersPage() {
                 <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--primary)' }}>
                   {c.name || `Cluster ${c.cluster_id}`}
                 </h4>
-                <span className="badge" style={{ backgroundColor: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4' }}>
+                <span className="badge" style={{ backgroundColor: 'rgba(255, 138, 101, 0.15)', color: '#ff8a65', border: '1px solid rgba(255, 138, 101, 0.3)' }}>
                   {c.size || 0} households ({c.pctShare || 0}%)
                 </span>
               </div>
@@ -100,11 +100,11 @@ export default function ClustersPage() {
               <div style={{ height: '160px', width: '100%' }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={profile}>
-                    <CartesianGrid strokeDasharray="2 2" stroke="#1e293b" />
-                    <XAxis dataKey="hour" stroke="#64748b" fontSize={10} interval={4} />
-                    <YAxis stroke="#64748b" fontSize={10} />
-                    <Tooltip contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151', fontSize: '11px' }} />
-                    <Line type="monotone" dataKey="kwh" stroke="#10b981" strokeWidth={2} dot={false} />
+                    <CartesianGrid strokeDasharray="2 2" stroke="#332227" />
+                    <XAxis dataKey="hour" stroke="#987b74" fontSize={10} interval={4} />
+                    <YAxis stroke="#987b74" fontSize={10} />
+                    <Tooltip contentStyle={{ backgroundColor: '#261c20', borderColor: '#5e3c45', color: '#fff3ee', fontSize: '11px', borderRadius: '6px' }} />
+                    <Line type="monotone" dataKey="kwh" stroke="#ff8a65" strokeWidth={2} dot={false} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

@@ -147,10 +147,10 @@ export default function AdvisorPage() {
 
       {/* RAG Recommendation Output */}
       {recommendation && (
-        <div className="card" style={{ marginBottom: '2rem', borderLeft: '4px solid var(--cyan)' }}>
+        <div className="card" style={{ marginBottom: '2rem', borderLeft: '4px solid var(--primary)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <h3 style={{ fontSize: '1.15rem', fontWeight: 600 }}>RAG Energy Advisory & Policy Guidance</h3>
-            <span className="badge" style={{ backgroundColor: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4' }}>
+            <span className="badge" style={{ backgroundColor: 'rgba(255, 138, 101, 0.15)', color: 'var(--primary)', border: '1px solid rgba(255, 138, 101, 0.3)' }}>
               Mode: {recommendation.mode.toUpperCase()}
             </span>
           </div>
@@ -250,7 +250,7 @@ export default function AdvisorPage() {
                 </div>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>CO₂ REDUCED</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: '#34d399' }}>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--primary)' }}>
                     {impactData.whatIf.totalCo2Saved.toFixed(1)} kg
                   </div>
                 </div>

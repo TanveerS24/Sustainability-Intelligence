@@ -126,11 +126,11 @@ export default function WarehousePage() {
             <div style={{ height: '280px', width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={rollupData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                  <XAxis dataKey="label" stroke="#64748b" fontSize={12} />
-                  <YAxis stroke="#64748b" fontSize={12} />
-                  <Tooltip contentStyle={{ backgroundColor: '#1f2937', borderColor: '#374151' }} />
-                  <Bar dataKey="total_kwh" fill="#10b981" radius={[4, 4, 0, 0]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#332227" />
+                  <XAxis dataKey="label" stroke="#987b74" fontSize={12} />
+                  <YAxis stroke="#987b74" fontSize={12} />
+                  <Tooltip contentStyle={{ backgroundColor: '#261c20', borderColor: '#5e3c45', color: '#fff3ee', borderRadius: '6px' }} />
+                  <Bar dataKey="total_kwh" fill="#ff8a65" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
